@@ -1,0 +1,24 @@
+{
+  "name": "Coffre-Fort Airtel Money",
+  "short_name": "Coffre-Fort",
+  "description": "Épargne sécurisée à verrouillage temporel — Airtel Money Gabon",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f9f9f9",
+  "theme_color": "#E3001B",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
