@@ -33,7 +33,7 @@ html,body{height:100%;overflow:hidden;font-family:var(--font);background:var(--g
 .tbar{color:#fff;padding:calc(var(--st)+16px) 20px 22px;flex-shrink:0;}
 .tbar.red{background:var(--red);}
 .tbar.green{background:var(--grn);}
-.tbar.dark{background:var(--g900);}
+.tbar.dark{background:var(--red);}
 .tbar-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;}
 .tbar h1{font-size:22px;font-weight:700;letter-spacing:-.3px;margin-bottom:4px;}
 .tbar p{font-size:12px;opacity:.78;}
@@ -308,7 +308,7 @@ html,body{height:100%;overflow:hidden;font-family:var(--font);background:var(--g
     <div class="card" style="padding:13px 16px;"><div style="font-size:11px;color:var(--g400);margin-bottom:4px;">Solde disponible</div><div style="font-size:22px;font-weight:700;"><span style="font-size:12px;color:var(--g400);margin-right:3px;">CFA</span><span id="fd-bal">50 000</span></div></div>
     <div class="igrp">
       <div class="irow"><div class="iico r"><svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg></div><div class="iwrap"><label>Nom du coffre</label><input type="text" id="fd-name" placeholder="Ex : Vacances, Loyer, École..." oninput="fdCheck()"></div></div>
-      <div class="irow"><div class="iico r"><svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg></div><div class="iwrap"><label>Montant initial (optionnel)</label><input type="number" id="fd-amt" placeholder="Ex : 5 000" inputmode="numeric" min="0" step="1" oninput="fdCheck()"></div><div class="isuf-r">CFA</div></div>
+      <div class="irow"><div class="iico r"><svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg></div><div class="iwrap"><label>Montant initial (optionnel)</label><input type="number" id="fd-amt" placeholder="Ex : 5 000 (min 1 000)" inputmode="numeric" min="0" step="1" oninput="fdCheck()"></div><div class="isuf-r">CFA</div></div>
       <div class="irow irow-tap" onclick="openDatePicker('fd')"><div class="iico r"><svg viewBox="0 0 24 24"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg></div><div class="iwrap"><label>Date de déblocage</label><div class="ptrig pmt" id="fd-date-disp">Choisir une date</div></div><svg width="18" height="18" viewBox="0 0 24 24" fill="#9e9e9e"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></div>
       <div class="irow irow-tap" onclick="openTimePicker('fd')"><div class="iico r"><svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg></div><div class="iwrap"><label>Heure de déblocage</label><div class="ptrig pmt" id="fd-time-disp">Choisir une heure</div></div><svg width="18" height="18" viewBox="0 0 24 24" fill="#9e9e9e"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></div>
     </div>
@@ -329,7 +329,7 @@ html,body{height:100%;overflow:hidden;font-family:var(--font);background:var(--g
     <div class="igrp">
       <div class="irow"><div class="iico g"><svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg></div><div class="iwrap"><label>Nom du coffre</label><input type="text" id="fg-name" placeholder="Ex : Moto, Téléphone, Voyage..." oninput="fgCheck()"></div></div>
       <div class="irow"><div class="iico g"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg></div><div class="iwrap"><label>Montant cible (objectif)</label><input type="number" id="fg-target" placeholder="Ex : 200 000" inputmode="numeric" min="1000" step="1" oninput="fgCheck()"></div><div class="isuf-g">CFA</div></div>
-      <div class="irow"><div class="iico g"><svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg></div><div class="iwrap"><label>Versement initial (optionnel)</label><input type="number" id="fg-amt" placeholder="Ex : 10 000" inputmode="numeric" min="0" step="1" oninput="fgCheck()"></div><div class="isuf-g">CFA</div></div>
+      <div class="irow"><div class="iico g"><svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg></div><div class="iwrap"><label>Versement initial (optionnel)</label><input type="number" id="fg-amt" placeholder="Ex : 10 000 (min 1 000)" inputmode="numeric" min="0" step="1" oninput="fgCheck()"></div><div class="isuf-g">CFA</div></div>
     </div>
     <div class="ebox" id="fg-err"></div>
     <div id="fg-preview" style="display:none;">
@@ -366,7 +366,7 @@ html,body{height:100%;overflow:hidden;font-family:var(--font);background:var(--g
     <div class="card" style="padding:13px 16px;"><div style="font-size:11px;color:var(--g400);margin-bottom:4px;">Solde disponible</div><div style="font-size:22px;font-weight:700;"><span style="font-size:12px;color:var(--g400);margin-right:3px;">CFA</span><span id="ad-bal">50 000</span></div></div>
     <div style="font-size:11px;color:var(--g400);font-weight:600;margin-bottom:4px;">MONTANT RAPIDE</div>
     <div class="quick-row"><button class="qbtn" onclick="setQAmt(1000)">1 000</button><button class="qbtn" onclick="setQAmt(5000)">5 000</button><button class="qbtn" onclick="setQAmt(10000)">10 000</button><button class="qbtn" onclick="setQAmt(25000)">25 000</button></div>
-    <div class="igrp"><div class="irow"><div class="iico r" id="ad-ico"><svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg></div><div class="iwrap"><label>Montant à verser</label><input type="number" id="ad-amt" placeholder="Ex : 5 000" inputmode="numeric" min="500" step="1" oninput="adChange()"></div><div class="isuf-r" id="ad-suf">CFA</div></div></div>
+    <div class="igrp"><div class="irow"><div class="iico r" id="ad-ico"><svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg></div><div class="iwrap"><label>Montant à verser</label><input type="number" id="ad-amt" placeholder="Ex : 5 000" inputmode="numeric" min="1000" step="1" oninput="adChange()"></div><div class="isuf-r" id="ad-suf">CFA</div></div></div>
     <div id="ad-gprev"></div>
     <div class="pvbox" id="ad-prev"><div class="pvrow"><span class="pla">Versement dans</span><span class="pv" id="adp-vault">—</span></div><div class="pvrow"><span class="pla">Montant</span><span id="adp-amt" class="pr">—</span></div><div class="pvrow"><span class="pla">Solde après</span><span id="adp-after" class="pr">—</span></div><div class="pvrow" id="adp-info"><span class="pla" id="adp-il">—</span><span class="pv" id="adp-iv">—</span></div></div>
     <div class="ebox" id="ad-err"></div>
@@ -438,6 +438,7 @@ html,body{height:100%;overflow:hidden;font-family:var(--font);background:var(--g
 <script>
 // ── STATE ───────────────────────────────────────────────
 const SK='cfa_v7';
+const safeInt=v=>{const n=Math.round(parseFloat(String(v).replace(/\s/g,''))||0);return isNaN(n)?0:n;};
 function load(){try{const r=localStorage.getItem(SK);if(r)return JSON.parse(r);}catch(e){}return{bal:50000,vaults:[]};}
 function save(){localStorage.setItem(SK,JSON.stringify(S));}
 let S=load(),stk=['pg-home'],curVid=null,pendingAmt=0,selType=null;
@@ -452,7 +453,7 @@ function tick(){const t=new Date().toLocaleTimeString('fr-FR',{hour:'2-digit',mi
 setInterval(tick,1000);tick();setInterval(renderHome,60000);
 
 // ── FORMAT ──────────────────────────────────────────────
-const fN=n=>Math.floor(n).toLocaleString('fr-FR');
+const fN=n=>Math.round(n).toLocaleString('fr-FR');
 const fD=d=>d.toLocaleDateString('fr-FR',{weekday:'short',day:'numeric',month:'long',year:'numeric'});
 const fDs=d=>d.toLocaleDateString('fr-FR',{day:'numeric',month:'short',year:'numeric'});
 const dL=ts=>Math.max(0,Math.ceil((ts-Date.now())/86400000));
@@ -539,7 +540,8 @@ function fdCheck(){
   if(ts<=Date.now()){err.textContent='La date doit être dans le futur.';err.style.display='block';return;}
   const days=Math.ceil((ts-Date.now())/86400000);
   const name=document.getElementById('fd-name').value||'Mon coffre';
-  const amt=Math.floor(parseFloat(document.getElementById('fd-amt').value)||0);
+  const amt=safeInt(document.getElementById('fd-amt').value);
+  if(amt>0&&amt<1000){err.textContent='Montant minimum : 1 000 CFA.';err.style.display='block';return;}
   if(amt>0&&amt>S.bal-100){err.textContent='Solde insuffisant (100 CFA de frais inclus).';err.style.display='block';return;}
   prev.style.display='block';
   document.getElementById('fdp-name').textContent=name;
@@ -555,8 +557,8 @@ function initFG(){document.getElementById('fg-name').value='';document.getElemen
 function fgCheck(){
   const err=document.getElementById('fg-err'),btn=document.getElementById('fg-btn'),prev=document.getElementById('fg-preview');
   err.style.display='none';btn.disabled=true;prev.style.display='none';
-  const target=Math.floor(parseFloat(document.getElementById('fg-target').value)||0);
-  const amt=Math.floor(parseFloat(document.getElementById('fg-amt').value)||0);
+  const target=safeInt(document.getElementById('fg-target').value);
+  const amt=safeInt(document.getElementById('fg-amt').value);
   if(!target||target<1000){if(target>0){err.textContent='Objectif minimum : 1 000 CFA.';err.style.display='block';}return;}
   if(amt>0&&amt>=target){err.textContent='Le versement initial ne peut pas atteindre ou dépasser l\'objectif.';err.style.display='block';return;}
   if(amt>0&&amt>S.bal-100){err.textContent='Solde insuffisant (100 CFA de frais inclus).';err.style.display='block';return;}
@@ -575,19 +577,19 @@ function createVault(type){
   const FRAIS=100;
   if(type==='date'){
     const name=document.getElementById('fd-name').value.trim()||'Mon coffre';
-    const ts=getUnlockTs();const amt=Math.floor(parseFloat(document.getElementById('fd-amt').value)||0);
-    if(!ts||ts<=Date.now())return;if(S.bal<FRAIS+(amt>0?amt:0)){showToast('Solde insuffisant');return;}
+    const ts=getUnlockTs();const amt=safeInt(document.getElementById('fd-amt').value);
+    if(!ts||ts<=Date.now())return;if(amt>0&&amt<1000){showToast('Montant minimum : 1 000 CFA');return;}if(S.bal<FRAIS+(amt>0?amt:0)){showToast('Solde insuffisant');return;}
     const v={id:'v'+Date.now(),type:'date',name,unlockTs:ts,createdAt:Date.now(),deposits:[]};
-    if(amt>0){v.deposits.push({amount:amt,date:Date.now()});S.bal=S.bal-amt;}
-    S.bal=S.bal-FRAIS;S.vaults.push(v);save();renderHome();curVid=v.id;showSuccVault(v,amt>0?amt:null);
+    if(amt>0){v.deposits.push({amount:amt,date:Date.now()});S.bal=Math.round(S.bal)-Math.round(amt);}
+    S.bal=Math.round(S.bal)-100;S.vaults.push(v);save();renderHome();curVid=v.id;showSuccVault(v,amt>0?amt:null);
   } else {
     const name=document.getElementById('fg-name').value.trim()||'Mon objectif';
-    const target=Math.floor(parseFloat(document.getElementById('fg-target').value)||0);
-    const amt=Math.floor(parseFloat(document.getElementById('fg-amt').value)||0);
-    if(!target||target<1000)return;if(S.bal<FRAIS+(amt>0?amt:0)){showToast('Solde insuffisant');return;}
+    const target=safeInt(document.getElementById('fg-target').value);
+    const amt=safeInt(document.getElementById('fg-amt').value);
+    if(!target||target<1000)return;if(amt>0&&amt<1000){showToast('Montant minimum : 1 000 CFA');return;}if(S.bal<FRAIS+(amt>0?amt:0)){showToast('Solde insuffisant');return;}
     const v={id:'v'+Date.now(),type:'goal',name,target,createdAt:Date.now(),deposits:[]};
-    if(amt>0){v.deposits.push({amount:amt,date:Date.now()});S.bal=S.bal-amt;}
-    S.bal=S.bal-FRAIS;S.vaults.push(v);save();renderHome();curVid=v.id;showSuccVault(v,amt>0?amt:null);
+    if(amt>0){v.deposits.push({amount:amt,date:Date.now()});S.bal=Math.round(S.bal)-Math.round(amt);}
+    S.bal=Math.round(S.bal)-100;S.vaults.push(v);save();renderHome();curVid=v.id;showSuccVault(v,amt>0?amt:null);
   }
 }
 
@@ -687,11 +689,11 @@ function openAddDeposit(){
 function adChange(){
   const v=S.vaults.find(x=>x.id===curVid);if(!v)return;
   const isG=v.type==='goal';const tot=vTot(v);
-  const amt=Math.floor(parseFloat(document.getElementById('ad-amt').value)||0);
+  const amt=safeInt(document.getElementById('ad-amt').value);
   const err=document.getElementById('ad-err'),prev=document.getElementById('ad-prev'),btn=document.getElementById('ad-btn');
   err.style.display='none';prev.style.display='none';btn.disabled=true;
   if(!amt)return;
-  if(amt<500){err.textContent='Montant minimum : 500 CFA.';err.style.display='block';return;}
+  if(amt<1000){err.textContent='Montant minimum : 1 000 CFA — montant trop faible.';err.style.display='block';return;}
   if(amt>S.bal){err.textContent='Solde insuffisant. Disponible : CFA '+fN(S.bal)+'.';err.style.display='block';return;}
   prev.style.display='block';
   document.getElementById('adp-vault').textContent=v.name;
@@ -712,8 +714,8 @@ function adChange(){
 function goAdConfirm(){
   const v=S.vaults.find(x=>x.id===curVid);if(!v)return;
   const isG=v.type==='goal';const tot=vTot(v);
-  const amt=Math.floor(parseFloat(document.getElementById('ad-amt').value)||0);
-  if(!amt||amt<500||amt>S.bal)return;
+  const amt=safeInt(document.getElementById('ad-amt').value);
+  if(!amt||amt<1000||amt>S.bal)return;
   pendingAmt=amt;
   document.getElementById('cf-ico').textContent=isG?'🎯':'🔒';document.getElementById('cf-ico').className='cficon '+(isG?'g':'r');
   document.getElementById('cf-amt').textContent=fN(amt);
@@ -731,7 +733,7 @@ function goAdConfirm(){
 function execDeposit(){
   const v=S.vaults.find(x=>x.id===curVid);if(!v||!pendingAmt)return;
   const isG=v.type==='goal';
-  S.bal=S.bal-pendingAmt;v.deposits.push({amount:pendingAmt,date:Date.now()});save();
+  S.bal=Math.round(S.bal)-Math.round(pendingAmt);v.deposits.push({amount:pendingAmt,date:Date.now()});save();
   const tot=vTot(v);const goalDone=isG&&tot>=v.target;
   const ico=document.getElementById('suc-ico');ico.className='sucico '+(isG?'g':'r');ico.textContent=isG?'🎯':'🔒';
   document.getElementById('suc-vbtn').className=isG?'btn-g':'btn-r';
@@ -751,7 +753,7 @@ function withdrawVault(){
   const tot=vTot(v);if(tot<=0)return;
   const msg=`Retirer CFA ${fN(tot)} vers votre solde Airtel Money ?\n\nSolde actuel : CFA ${fN(S.bal)}\nSolde après : CFA ${fN(S.bal+tot)}`;
   if(!confirm(msg))return;
-  S.bal=S.bal+tot;v.withdrawn=true;v.withdrawnAt=Date.now();v.withdrawnAmount=tot;v.deposits=[];
+  S.bal=Math.round(S.bal)+Math.round(tot);v.withdrawn=true;v.withdrawnAt=Date.now();v.withdrawnAmount=tot;v.deposits=[];
   save();renderHome();showToast('CFA '+fN(tot)+' retournés sur votre solde !');goTab('home');
 }
 
