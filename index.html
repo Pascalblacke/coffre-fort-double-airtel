@@ -199,7 +199,6 @@ html,body{height:100%;overflow:hidden;font-family:var(--font);background:var(--g
 .pvrow:last-child{border-bottom:none;}
 .pla{color:var(--g400);}
 .pr{font-weight:600;color:var(--red);}
-.pg{font-weight:600;color:var(--grn);}
 .pv{font-weight:600;}
 .wbox{border-radius:14px;padding:14px 16px;font-size:12px;line-height:1.8;display:flex;gap:11px;align-items:flex-start;background:var(--rlight);border:1px solid var(--rmid);color:var(--rdark);}
 .wbox svg{width:16px;height:16px;fill:currentColor;flex-shrink:0;margin-top:2px;}
@@ -252,6 +251,9 @@ html,body{height:100%;overflow:hidden;font-family:var(--font);background:var(--g
 /* TOAST */
 .toast{position:absolute;top:calc(var(--st)+12px);left:50%;transform:translateX(-50%) translateY(-80px);background:var(--g900);color:#fff;padding:11px 22px;border-radius:100px;font-size:13px;font-weight:500;z-index:999;transition:transform .3s cubic-bezier(.34,1.56,.64,1);white-space:nowrap;max-width:90%;}
 .toast.show{transform:translateX(-50%) translateY(0);}
+/* TEXT COLORS — séparés de la classe .pg pour éviter les conflits */
+.txt-grn{font-weight:600;color:var(--grn);}
+.txt-red{font-weight:600;color:var(--red);}
 </style>
 </head>
 <body>
@@ -280,7 +282,7 @@ html,body{height:100%;overflow:hidden;font-family:var(--font);background:var(--g
     <div class="card"><div class="balrow"><div class="balhalf"><div class="ballbl">Solde disponible</div><div class="balamt"><span class="balcfa">CFA</span><span id="hbal">50 000</span></div></div><div class="baldiv"></div><div class="balhalf"><div class="ballbl">Total dans coffres</div><div class="balamt red"><span class="balcfa">CFA</span><span id="hvlt">0</span></div></div></div></div>
     <div style="display:flex;gap:10px;" id="sum-badges"></div>
     <div class="seclbl">Mes coffres</div>
-    <div id="vaultlist"><div class="empty"><svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg><p>Aucun coffre pour le moment.<br>Appuyez sur <strong>+</strong> pour créer votre premier coffre.</p></div></div>
+    <div id="vaultlist"><div class="empty"><svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1.9 2 2 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg><p>Aucun coffre pour le moment.<br>Appuyez sur <strong>+</strong> pour créer votre premier coffre.</p></div></div>
   </div></div>
   <nav class="bnav">
     <button class="nbtn on" onclick="goTab('home')"><svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>Coffres</button>
@@ -624,7 +626,7 @@ function renderHome(){
     if(v.withdrawn){return`<div class="vcard"><div class="${isG?'vh-grn':'vh-red'} vh-done"><div><div class="vcard-name">${v.name}</div><div class="vcard-type">${isG?'🎯':'📅'} TERMINÉ</div></div><div><div class="vcard-amtlbl">Retiré</div><div class="vcard-amt">CFA ${fN(v.withdrawnAmount||0)}</div></div></div><div class="vcard-body"><div class="vrow"><span class="vl">Statut</span><span class="vg">✓ Retiré</span></div></div><div class="vcard-acts"><button class="vbtn ${isG?'og':'or'}" onclick="deleteVault('${v.id}')">Supprimer</button></div></div>`;}
     if(isG){
       const pct=v.target>0?Math.min(100,Math.round((tot/v.target)*100)):0;const rem=Math.max(0,v.target-tot);
-      return`<div class="vcard"><div class="vh-grn"><div><div class="vcard-name">${v.name}</div><div class="vcard-type">🎯 COFFRE À OBJECTIF</div></div><div><div class="vcard-amtlbl">${fN(tot)} / ${fN(v.target)}</div><div class="vcard-amt">${pct}%</div></div></div><div class="vcard-body"><div class="prog-bar"><div class="prog-grn" style="width:${pct}%"></div></div><div class="vrow"><span class="vl">${done?'Objectif atteint !':'Reste à atteindre'}</span><span class="vg">${done?'✓ Débloqué':'CFA '+fN(rem)}</span></div><div class="vrow"><span class="vl">Versements</span><span class="vv">${v.deposits.length}</span></div></div><div class="vcard-acts"><button class="vbtn ${done?'bg':'bg'}" onclick="openDetail('${v.id}')"><svg viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>${done?'Retirer':'Verser'}</button><button class="vbtn og" onclick="openDetail('${v.id}')">Détails</button></div></div>`;
+      return`<div class="vcard"><div class="vh-grn"><div><div class="vcard-name">${v.name}</div><div class="vcard-type">🎯 COFFRE À OBJECTIF</div></div><div><div class="vcard-amtlbl">${fN(tot)} / ${fN(v.target)}</div><div class="vcard-amt">${pct}%</div></div></div><div class="vcard-body"><div class="prog-bar"><div class="prog-grn" style="width:${pct}%"></div></div><div class="vrow"><span class="vl">${done?'Objectif atteint !':'Reste à atteindre'}</span><span class="vg">${done?'✓ Débloqué':'CFA '+fN(rem)}</span></div><div class="vrow"><span class="vl">Versements</span><span class="vv">${v.deposits.length}</span></div></div><div class="vcard-acts"><button class="vbtn bg" onclick="openDetail('${v.id}')"><svg viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>${done?'Retirer':'Verser'}</button><button class="vbtn og" onclick="openDetail('${v.id}')">Détails</button></div></div>`;
     } else {
       const days=dL(v.unlockTs);const totalD=Math.max(1,Math.ceil((v.unlockTs-v.createdAt)/86400000));const pct=done?100:Math.max(3,Math.min(97,Math.round(((totalD-days)/totalD)*100)));
       return`<div class="vcard"><div class="vh-red"><div><div class="vcard-name">${v.name}</div><div class="vcard-type">📅 COFFRE À DURÉE</div></div><div><div class="vcard-amtlbl">Total</div><div class="vcard-amt">CFA ${fN(tot)}</div></div></div><div class="vcard-body"><div class="prog-bar"><div class="prog-red" style="width:${pct}%"></div></div><div class="vrow"><span class="vl">Statut</span><span class="${done?'vg':'vr'}">${done?'✓ Débloqué':days+' jour'+(days>1?'s':'')+' restants'}</span></div><div class="vrow"><span class="vl">Versements</span><span class="vv">${v.deposits.length}</span></div></div><div class="vcard-acts"><button class="vbtn br" onclick="openDetail('${v.id}')"><svg viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>${done?'Retirer':'Verser'}</button><button class="vbtn or" onclick="openDetail('${v.id}')">Détails</button></div></div>`;
@@ -686,6 +688,7 @@ function openAddDeposit(){
   go('pg-add-dep');
 }
 
+// ── BUG CORRIGÉ ICI : 'pg' → 'vg' pour les spans verts ──
 function adChange(){
   const v=S.vaults.find(x=>x.id===curVid);if(!v)return;
   const isG=v.type==='goal';const tot=vTot(v);
@@ -697,8 +700,10 @@ function adChange(){
   if(amt>S.bal){err.textContent='Solde insuffisant. Disponible : CFA '+fN(S.bal)+'.';err.style.display='block';return;}
   prev.style.display='block';
   document.getElementById('adp-vault').textContent=v.name;
-  document.getElementById('adp-amt').textContent='CFA '+fN(amt);document.getElementById('adp-amt').className=isG?'pg':'pr';
-  document.getElementById('adp-after').textContent='CFA '+fN(S.bal-amt);document.getElementById('adp-after').className=isG?'pg':'pr';
+  document.getElementById('adp-amt').textContent='CFA '+fN(amt);
+  document.getElementById('adp-amt').className=isG?'vg':'pr';       // CORRIGÉ : 'pg' → 'vg'
+  document.getElementById('adp-after').textContent='CFA '+fN(S.bal-amt);
+  document.getElementById('adp-after').className=isG?'vg':'pr';     // CORRIGÉ : 'pg' → 'vg'
   if(isG){
     const newTot=tot+amt;const pct=Math.min(100,Math.round((newTot/v.target)*100));const rem=Math.max(0,v.target-newTot);
     document.getElementById('adp-il').textContent='Progression après';
